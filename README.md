@@ -28,3 +28,19 @@ cd ecoshop-web
 npm install
 npm run dev
 ```
+
+## Scripts disponibles
+
+| Comanda | Funció |
+|---------|--------|
+| `npm run dev` | Inicia el servidor de desenvolupament |
+| `npm run build` | Compila el projecte per a producció |
+| `npm test` | Executa els tests amb Jest |
+
+## Variables d'entorn
+Crea un fitxer `.env` a l'arrel:
+
+
+MONGO_URI=mongodb://localhost:27017/ecoshop
+JWT_SECRET=el_teu_secret
+STRIPE_KEY=pk_test_...
