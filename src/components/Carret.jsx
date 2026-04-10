@@ -1,10 +1,21 @@
 import { useState } from 'react';
 
 function Carret() {
-  const [items, setItems] = useState([]);
+  // FIX: recuperar carret de localStorage al recarregar
+  const initialItems = JSON.parse(localStorage.getItem('carret') || '[]');
+  const [items, setItems] = useState(initialItems);
 
-  const afegir = (producte) => setItems([...items, producte]);
-  const eliminar = (id) => setItems(items.filter(i => i.id !== id));
+  const afegir = (producte) => {
+    const nouItems = [...items, producte];
+    setItems(nouItems);
+    localStorage.setItem('carret', JSON.stringify(nouItems));
+  };
+
+  const eliminar = (id) => {
+    const nouItems = items.filter(i => i.id !== id);
+    setItems(nouItems);
+    localStorage.setItem('carret', JSON.stringify(nouItems));
+  };
 
   return { items, afegir, eliminar, total: items.length };
 }
